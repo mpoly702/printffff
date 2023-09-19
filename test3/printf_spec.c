@@ -104,7 +104,7 @@ int get_modifier(char *s, params_t *params)
 	switch (*s)
 	{
 		case 'h':
-			i = params->h_modifier = 1;
+			i = params->modi_h = 1;
 			break;
 		case 'l':
 			i = params->l_modifier = 1;
