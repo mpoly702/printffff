@@ -8,7 +8,7 @@
  * Return:the  new pointer
 */
 
-char *get_precision(char *s, params_t *params, va_list ap)
+char *get_precision(char *s, pmtrs_t *params, va_list ap)
 {
 	int d = 0;
 
