@@ -81,7 +81,7 @@ int get_flag(char *s, params_t *params)
 			i = params->flg_htag = 1;
 			break;
 		case '-':
-			i = params->minus_flag = 1;
+			i = params->flg_ms = 1;
 			break;
 		case '0':
 			i = params->flg_z = 1;
