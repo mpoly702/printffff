@@ -72,7 +72,7 @@ int get_flag(char *s, params_t *params)
 	switch (*s)
 	{
 		case '+':
-			i = params->plus_flag = 1;
+			i = params->flag_pls = 1;
 			break;
 		case ' ':
 			i = params->space_flag = 1;
