@@ -15,7 +15,7 @@
 
 #define NULL_STR "(null)"
 
-#define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+#define INIT_PMTRS {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 #define FIELD_BUF_SIZE 50
 
