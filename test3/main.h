@@ -22,16 +22,16 @@
 /**
  * struct pmeter - pmeter struct
  *
- * @unsign: flag if unsigned value
+ * @unsign: usg defined
  *
- * @plus_flag: on if plus_flag specified
- * @space_flag: on if hashtag_flag specified
- * @hashtag_flag: on if _flag specified
- * @zero_flag: on if _flag specified
- * @minus_flag: on if _flag specified
+ * @space_flag: flg_sp defined
+ * @plus_flag: flg_pls defined
+ * @zero_flag: flg_z defined
+ * @minus_flag: flg_ms defined
+ * @hashtag_flag: htag_flg defined
  *
- * @width: field width specified
- * @precision: field precision specified
+ * @width: field width defined
+ * @precision: field defined
  *
  * @h_modifier: on if h_modifier is specified
  * @l_modifier: on if l_modifier is specified
@@ -40,7 +40,7 @@
 
 typedef struct pmeter
 {
-	unsigned int unsign			: 1;
+	unsigned int usg			: 1;
 
 	unsigned int plus_flag		: 1;
 	unsigned int space_flag		: 1;
