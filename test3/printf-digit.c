@@ -14,7 +14,7 @@ void init_params(params_t *params, va_list ap)
 	params->flag_pls = 0;
 	params->space_flag = 0;
 	params->flg_htag = 0;
-	params->zero_flag = 0;
+	params->flg_z = 0;
 	params->minus_flag = 0;
 
 	params->width = 0;
