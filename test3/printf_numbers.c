@@ -51,7 +51,7 @@ int print_number(char *str, params_t *params)
 	if (neg)
 		*--str = '-';
 
-	if (!params->minus_flag)
+	if (!params->flg_ms)
 		return (print_number_right_shift(str, params));
 	else
 		return (print_number_left_shift(str, params));
@@ -69,10 +69,10 @@ int print_number_right_shift(char *str, params_t *params)
 	unsigned int n = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
-	if (params->flg_z && !params->minus_flag)
+	if (params->flg_z && !params->flg_ms)
 		pad_char = '0';
 	neg = neg2 = (!params->usg && *str == '-');
-	if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
+	if (neg && i < params->width && pad_char == '0' && !params->flg_ms)
 		str++;
 	else
 		neg = 0;
@@ -111,10 +111,10 @@ int print_number_left_shift(char *str, params_t *params)
 	unsigned int n = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
-	if (params->flg_z && !params->minus_flag)
+	if (params->flg_z && !params->flg_ms)
 		pad_char = '0';
 	neg = neg2 = (!params->usg && *str == '-');
-	if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
+	if (neg && i < params->width && pad_char == '0' && !params->flg_ms)
 		str++;
 	else
 		neg = 0;
