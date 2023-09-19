@@ -11,7 +11,7 @@
 #define CONVERT_UNSIGNED	2
 
 #define BUFF_FREE -1
-#define OUTPUT_BUF_SIZE 1024
+#define OUTPUT_BUFFER 1024
 
 #define NULL_STRING "(null)"
 
