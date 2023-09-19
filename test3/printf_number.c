@@ -28,7 +28,7 @@ int print_from_to(char *start, char *stop, char *except)
  *
  * Return: no of  bytes printed
  */
-int print_rev(va_list ap, params_t *params)
+int print_rev(va_list ap, pmtrs_t *params)
 {
 	int len, sum = 0;
 	char *str = va_arg(ap, char *);
@@ -52,7 +52,7 @@ int print_rev(va_list ap, params_t *params)
  *
  * Return: no of the bytes printed
  */
-int print_rot13(va_list ap, params_t *params)
+int print_rot13(va_list ap, pmtrs_t *params)
 {
 	int i, index;
 	int count = 0;
