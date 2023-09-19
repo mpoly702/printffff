@@ -13,7 +13,7 @@
 #define BUFF_FREE -1
 #define OUTPUT_BUFFER 1024
 
-#define NULL_STRING "(null)"
+#define NULL_STR "(null)"
 
 #define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
