@@ -7,12 +7,12 @@
  * Return: void
  */
 
-void init_params(params_t *params, va_list ap)
+void init_params(pmtrs_t *params, va_list ap)
 {
 	params->usg = 0;
 
-	params->flag_pls = 0;
-	params->space_flag = 0;
+	params->flg_pls = 0;
+	params->flg_sp = 0;
 	params->flg_htag = 0;
 	params->flg_z = 0;
 	params->flg_ms = 0;
