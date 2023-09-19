@@ -26,8 +26,8 @@
  *
  * @space_flag: flg_sp defined
  * @flag_pls: 	flg_pls defined
- * @zero_flag: 	flg_z defined
- * @minus_flag: flg_ms defined
+ * @flg_z: 	flg_z defined
+ * @flg_ms: flg_ms defined
  * @htag_flg:	flg_htag defined
  *
  * @width: field width defined
