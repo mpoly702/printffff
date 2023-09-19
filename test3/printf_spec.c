@@ -9,7 +9,7 @@
 int (*get_specifier(char *s))(va_list ap, pmtrs_t *params)
 
 {
-	specifier_t specifiers[] = {
+	ind_t indicators[] = {
 		{"c", print_char},
 		{"d", print_int},
 		{"i", print_int},
@@ -29,11 +29,11 @@ int (*get_specifier(char *s))(va_list ap, pmtrs_t *params)
 
 	int i = 0;
 
-	while (specifiers[i].specifier)
+	while (indicators[i].indicator)
 	{
-		if (*s == specifiers[i].specifier[0])
+		if (*s == indicators[i].indicator[0])
 		{
-			return (specifiers[i].f);
+			return (indicators[i].f);
 		}
 		i++;
 	}
