@@ -17,7 +17,7 @@
 
 #define INIT_PMTRS {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
-#define FIELD_BUF_SIZE 50
+#define BUF_FIELD 50
 
 /**
  * struct parameters - parameters struct
