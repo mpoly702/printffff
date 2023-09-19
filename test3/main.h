@@ -22,10 +22,10 @@
 /**
  * struct pmeter - pmeter struct
  *
- * @unsign: usg defined
+ * @usg: usg defined
  *
  * @space_flag: flg_sp defined
- * @plus_flag: flg_pls defined
+ * @flag_pls: flg_pls defined
  * @zero_flag: flg_z defined
  * @minus_flag: flg_ms defined
  * @hashtag_flag: htag_flg defined
@@ -42,7 +42,7 @@ typedef struct pmeter
 {
 	unsigned int usg			: 1;
 
-	unsigned int plus_flag		: 1;
+	unsigned int flag_pls		: 1;
 	unsigned int space_flag		: 1;
 	unsigned int hashtag_flag	: 1;
 	unsigned int zero_flag		: 1;
