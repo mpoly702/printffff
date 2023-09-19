@@ -42,7 +42,7 @@ int rev_string(char *s);
 int _strlenc(const char *s);
 int printf_crack(void);
 int printf_char(va_list val);
-int printf_string(va_list val);
+int printf_str1(va_list val);
 int _putchar(char c);
 int _printf(const char *format, ...);
 
