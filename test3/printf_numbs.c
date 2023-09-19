@@ -9,7 +9,7 @@
  *
  * Return: The string
  */
-char *convert(long int num, int base, int flags, params_t *params)
+char *convert(long int num, int base, int flags, pmtrs_t *params)
 {
 	static char *array;
 	static char buffer[50];
@@ -44,7 +44,7 @@ char *convert(long int num, int base, int flags, params_t *params)
  *
  * Return:d  bytes printed
  */
-int print_unsigned(va_list ap, params_t *params)
+int print_unsigned(va_list ap, pmtrs_t *params)
 {
 	unsigned long l;
 
@@ -68,7 +68,7 @@ int print_unsigned(va_list ap, params_t *params)
  * Return: This is the byte to be printed
  *
  */
-int print_address(va_list ap, params_t *params)
+int print_address(va_list ap, pmtrs_t *params)
 {
 	unsigned long int n = va_arg(ap, unsigned long int);
 	char *str;
