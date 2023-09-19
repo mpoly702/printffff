@@ -28,7 +28,7 @@
  * @flag_pls: flg_pls defined
  * @zero_flag: flg_z defined
  * @minus_flag: flg_ms defined
- * @hashtag_flag: htag_flg defined
+ * @flg_htag:flg_htag defined
  *
  * @width: field width defined
  * @precision: field defined
@@ -44,7 +44,7 @@ typedef struct pmeter
 
 	unsigned int flag_pls		: 1;
 	unsigned int space_flag		: 1;
-	unsigned int hashtag_flag	: 1;
+	unsigned int flg_htag		: 1;
 	unsigned int zero_flag		: 1;
 	unsigned int minus_flag		: 1;
 
