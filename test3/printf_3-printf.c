@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * print_char - This prints char
- * @ap: argument pointer
- * @params: parameters structure
+ * print_ch - This prints characters only
+ * @ap: points to argument
+ * @prmtr: parameters structure
  *
- * Return: The no char to be  printed
+ * Return: character
  */
-int print_char(va_list ap, pmtrs_t *params)
+int print_char(va_list ap, pmtrs_t *prmtr)
 {
 	char pad_char = ' ';
 	unsigned int pad = 1, sum = 0, ch = va_arg(ap, int);
