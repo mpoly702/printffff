@@ -20,7 +20,7 @@
 #define BUF_FIELD 50
 
 /**
- * struct parameters - parameters struct
+ * struct pmeter - pmeter struct
  *
  * @unsign: flag if unsigned value
  *
@@ -38,7 +38,7 @@
  *
  */
 
-typedef struct parameters
+typedef struct pmeter
 {
 	unsigned int unsign			: 1;
 
