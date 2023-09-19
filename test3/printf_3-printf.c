@@ -34,7 +34,7 @@ int print_int(va_list ap, params_t *params)
 
 	if (params->l_modifier)
 		l = va_arg(ap, long);
-	else if (params->h_modifier)
+	else if (params->modi_h)
 		l = (short int)va_arg(ap, int);
 	else
 		l = (int)va_arg(ap, int);
