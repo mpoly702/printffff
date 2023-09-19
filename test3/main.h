@@ -33,8 +33,8 @@
  * @width: field width defined
  * @precision: field defined
  *
- * @h_modifier: on if h_modifier is specified
- * @l_modifier: on if l_modifier is specified
+ * @modi_h: on if modi_h is specified
+ * @modi_l: on if modi_h is specified
  *
  */
 
@@ -56,16 +56,16 @@ typedef struct pmeter
 } pmtrs_t;
 
 /**
- * struct specifier - Struct token
+ * struct indicator - Struct token
  *
- * @specifier: format token
- * @f: The function associated
+ * @indicator: token for formatt
+ * @f: The function called
  */
-typedef struct specifier
+typedef struct indicator
 {
-	char *specifier;
+	char *indicator;
 	int (*f)(va_list, pmtrs_t *);
-} specifier_t;
+} ind_t;
 
 int print_char(va_list ap, pmtrs_t *params);
 int print_int(va_list ap, pmtrs_t *params);
