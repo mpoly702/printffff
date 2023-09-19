@@ -42,17 +42,17 @@ typedef struct pmeter
 {
 	unsigned int usg			: 1;
 
-	unsigned int flag_pls		: 1;
-	unsigned int space_flag		: 1;
+	unsigned int flg_pls		: 1;
+	unsigned int flg_sp		: 1;
 	unsigned int flg_htag		: 1;
-	unsigned int zero_flag		: 1;
-	unsigned int minus_flag		: 1;
+	unsigned int flg_z		: 1;
+	unsigned int flg_ms		: 1;
+
+	unsigned int modi_h		: 1;
+	unsigned int modi_l		: 1;
 
 	unsigned int width;
 	unsigned int precision;
-
-	unsigned int h_modifier		: 1;
-	unsigned int l_modifier		: 1;
 } params_t;
 
 /**
