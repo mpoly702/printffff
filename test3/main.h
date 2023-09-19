@@ -10,7 +10,7 @@
 #define LOWER_CASE	1
 #define CONVERT_UNSIGNED	2
 
-#define BUF_FLUSH -1
+#define BUFF_FREE -1
 #define OUTPUT_BUF_SIZE 1024
 
 #define NULL_STRING "(null)"
