@@ -13,22 +13,31 @@ int _printf(const char * const format, ...)
 	
     va_list args;
     va_start(args, format);
-    int i;
-  
-    while (*format) {
-        if (*format == '%') {
-            format++; /*Move past the '%'*/
-            for (i = 0; i < 2; i++) { // Loop through the specifiers in the struct
-                if (*format == specifierFunctionMap[i].specifier) {
-                    specifierFunctionMap[i].function(args);
+	
+	char *formatPtr = (char *)format;
+    while (*formatPtr) 
+    {
+        if (*formatPtr == '%') 
+	{
+            formatPtr++; /*Move past the '%'*/
+		
+		int i;
+            for (i = 0; i < 2; i++) 
+	    if (*formatPtr == 's') 
+	    {
+                    Print_String(args);
                     break;
-                }
-            }
-        } else {
-            _putchar(*format);
-        }
-        format++; /*Move to the next character in the format string*/
+	    } else if (*formatPtr == 'c') 
+	    {
+                    Print_Char(args);
+                    break;
+	    }
+            else 
+	    {
+            _putchar(*formatPtr);
+	    }
+        	formatPtr++; /* Move to the next character in the format string */
+	}
     }
-
-    va_end(args);
+	va_end(args);
 }
