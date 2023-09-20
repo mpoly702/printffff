@@ -21,6 +21,6 @@ void init_prmtr(pmtrs_t *prmtr, va_list ap)
 	prmtr->precision = UINT_MAX;
 
 	prmtr->modi_h = 0;
-	prmtr->l_modifier = 0;
+	prmtr->modi_l = 0;
 	(void)ap;
 }
