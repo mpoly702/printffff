@@ -7,7 +7,7 @@
  *
  * Return: character
  */
-int print_char(va_list ap, pmtrs_t *prmtr)
+int print_ch(va_list ap, pmtrs_t *prmtr)
 {
 	char pad_ch = ' ';
 	unsigned int padd = 1, add = 0, ch = va_arg(ap, int);
@@ -28,7 +28,7 @@ int print_char(va_list ap, pmtrs_t *prmtr)
  *
  * Return: nothing outrageous
  */
-int print_int(va_list ap, pmtrs_t *prmtr)
+int print_integer(va_list ap, pmtrs_t *prmtr)
 {
 	long li;
 
@@ -38,7 +38,7 @@ int print_int(va_list ap, pmtrs_t *prmtr)
 		li = (short int)va_arg(ap, int);
 	else
 		li = (int)va_arg(ap, int);
-	return (print_number(convert(li, 10, 0, prmtr), prmtr));
+	return (print_num(transform(li, 10, 0, prmtr), prmtr));
 }
 
 /**
@@ -53,7 +53,7 @@ int print_str1(va_list ap, pmtrs_t *prmtr)
 	char *str = va_arg(ap, char *), pad_ch = ' ';
 	unsigned int padd = 0, add = 0, i = 0, j;
 
-	(void)params;
+	(void)prmtr;
 	switch ((int)(!str))
 		case 1:
 			str = NULL_STR;
@@ -90,7 +90,7 @@ int print_str1(va_list ap, pmtrs_t *prmtr)
  *
  * Return: number of characters
  */
-int print_percent(va_list ap, pmtrs_t *prmtr)
+int print_per(va_list ap, pmtrs_t *prmtr)
 {
 	(void)ap;
 	(void)prmtr;
@@ -100,7 +100,7 @@ int print_percent(va_list ap, pmtrs_t *prmtr)
 /**
  * print_SOS - customized format specification
  * @ap: POINTS TO ARGUMENT
- * @params: struct parameter
+ * @prmtr: struct parameter
  *
  * Return: number of character to be  printed
  */
@@ -118,7 +118,7 @@ int print_SOS(va_list ap, pmtrs_t *prmtr)
 		{
 			add += _putchar('\\');
 			add += _putchar('x');
-			hexa = convert(*str, 16, 0, prmtr);
+			hexa = transform(*str, 16, 0, prmtr);
 			if (!hexa[1])
 				add += _putchar('0');
 			add += _puts(hexa);
