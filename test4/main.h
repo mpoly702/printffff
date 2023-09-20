@@ -16,6 +16,7 @@ struct SpecifierFunctionMap
 };
 
 int _putchar(char c);
+int _printf(const char * const format, ...);
 void Print_String(va_list args);
 void Print_Char(va_list args);
 
