@@ -8,7 +8,7 @@
  *
  * Return: no of bytes to be outputted
  */
-int print_from_to(char *begin, char *end, char *except)
+int print_w(char *begin, char *end, char *except)
 {
 	int add = 0;
 
@@ -28,7 +28,7 @@ int print_from_to(char *begin, char *end, char *except)
  *
  * Return: number of  bites to print
  */
-int print_rev(va_list ap, pmtrs_t *prmtr)
+int rev_str(va_list ap, pmtrs_t *prmtr)
 {
 	int lenn, add = 0;
 	char *str = va_arg(ap, char *);
