@@ -1,29 +1,29 @@
 #include "main.h"
 
 /**
- * get_specifier - This finds thefunction of format
- * @s: string of format
- * Return:no of bytes that was  printed
+ * specifier_get - This finds the function of the format
+ * @s: format string
+ * Return:number of bytes that was  printed
  */
 
-int (*get_specifier(char *s))(va_list ap, pmtrs_t *params)
+int (*specifier_get(char *s))(va_list ap, pmtrs_t *prmtr)
 
 {
 	ind_t indicators[] = {
-		{"c", print_char},
-		{"d", print_int},
-		{"i", print_int},
-		{"s", print_string},
+		{"c", print_ch},
+		{"d", print_integer},
+		{"i", print_integer},
+		{"s", print_str1},
 		{"%", print_percent},
 		{"b", print_binary},
 		{"o", print_octal},
-		{"u", print_unsigned},
+		{"u", unsigned_print},
 		{"x", print_hex},
 		{"X", print_HEX},
-		{"p", print_address},
-		{"S", print_S},
-		{"r", print_rev},
-		{"R", print_rot13},
+		{"p", print_locate},
+		{"S", print_SOS},
+		{"r", rev_str},
+		{"R", print_root13},
 		{NULL, NULL}
 	};
 
@@ -41,19 +41,19 @@ int (*get_specifier(char *s))(va_list ap, pmtrs_t *params)
 }
 
 /**
- * get_print_func - finds  function format
- * @s: string
- * @ap: argument pointer
- * @params:  parameter struct
- * Return: no of bytes printed
+ * func_get_print - this function finds  function format
+ * @s: parameter is a string
+ * @ap: points to an argument
+ * @prmtr:  parameter to a struct
+ * Return: number of bytes printed
  */
 
-int get_print_func(char *s, va_list ap, pmtrs_t *params)
+int func_get_print(char *s, va_list ap, pmtrs_t *prmtr)
 {
-	int (*f)(va_list, pmtrs_t *) = get_specifier(s);
+	int (*f)(va_list, pmtrs_t *) = specifier_get(s);
 
 	if (f)
-		return (f(ap, params));
+		return (f(ap, prmtr));
 	return (0);
 }
 
