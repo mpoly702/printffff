@@ -1,130 +1,130 @@
 #include "main.h"
 
 /**
- * _isdigit - check char is digit
- * @c: char to check
+ * _Adigit - check if character is a digit
+ * @ch: character to be checked
  *
- * Return: 1 if digit,and return 0 if otherwise
+ * Return: 1 or 0
  */
-int _isdigit(int c)
+int _Adigit(int ch)
 {
-	return (c >= '0' && c <= '9');
+	return (ch >= '0' && ch <= '9');
 }
 
 /**
  * _strlen - returns string length
- * @s: string length to check
+ * @str: string length to check
  *
- * Return: integer length of string
+ * Return:blength of string
  */
-int _strlen(char *s)
+int _strlen(char *str)
 {
 	int i = 0;
 
-	while (*s++)
+	while (*str++)
 		i++;
 	return (i);
 }
 
 /**
- * print_number - This print a no  with options
- * @str: base no as string
- * @params: parameter structure
+ * print_num - This print options with number
+ * @s: base number is a string
+ * @prmtr: parameter to struct
  *
- * Return: The character printed
+ * Return: The character to be printed
  */
-int print_number(char *str, pmtrs_t *params)
+int print_num(char *str, pmtrs_t *prmtr)
 {
 	unsigned int i = _strlen(str);
-	int neg = (!params->usg && *str == '-');
+	int gen = (!prmtr->usg && *s == '-');
 
-	if (!params->precision && *str == '0' && !str[1])
-		str = "";
-	if (neg)
+	if (!prmtr->precision && *s == '0' && !s[1])
+		s = "";
+	if (gen)
 	{
-		str++;
+		s++;
 		i--;
 	}
-	if (params->precision != UINT_MAX)
-		while (i++ < params->precision)
-			*--str = '0';
-	if (neg)
-		*--str = '-';
+	if (prmtr->precision != UINT_MAX)
+		while (i++ < prmtr->precision)
+			*--s = '0';
+	if (gen)
+		*--s = '-';
 
-	if (!params->flg_ms)
-		return (print_number_right_shift(str, params));
+	if (!prmtr->flg_ms)
+		return (print_shift(s, prmtr));
 	else
-		return (print_number_left_shift(str, params));
+		return (print_shift(s, prmtr));
 }
 
 /**
- * print_number_right_shift - This prints no with options
- * @str:  base no as  string
- * @params: parameter structure
+ * print_shift - This prints numbers with options
+ * @s:  base no as  string
+ * @prmtr: parameter to struct
  *
- * Return: xter printed
+ * Return: charactersssss printed
  */
-int print_number_right_shift(char *str, pmtrs_t *params)
+int print_shift(char *s, pmtrs_t *prmtr)
 {
-	unsigned int n = 0, neg, neg2, i = _strlen(str);
-	char pad_char = ' ';
+	unsigned int n = 0, gen, gen2, i = _strlen(str);
+	char pad_ch = ' ';
 
-	if (params->flg_z && !params->flg_ms)
-		pad_char = '0';
-	neg = neg2 = (!params->usg && *str == '-');
-	if (neg && i < params->width && pad_char == '0' && !params->flg_ms)
-		str++;
+	if (prmtr->flg_z && !prmtr->flg_ms)
+		pad_ch = '0';
+	gen = gen2 = (!prmtr->usg && *s == '-');
+	if (gen && i < prmtr->width && pad_ch == '0' && !prmtr->flg_ms)
+		s++;
 	else
-		neg = 0;
-	if ((params->flag_pls && !neg2) ||
-		(!params->flag_pls && params->space_flag && !neg2))
+		gen = 0;
+	if ((prmtr->flag_pls && !gen2) ||
+		(!prmtr->flag_pls && prmtr->flg_sp && !gen2))
 		i++;
-	if (neg && pad_char == '0')
+	if (gen && pad_ch == '0')
 		n += _putchar('-');
-	if (params->flag_pls && !neg2 && pad_char == '0' && !params->usg)
+	if (prmtr->flag_pls && !gen2 && pad_ch == '0' && !prmtr->usg)
 		n += _putchar('+');
-	else if (!params->flag_pls && params->space_flag && !neg2 &&
-		!params->usg && params->flg_z)
+	else if (!prmtr->flag_pls && prmtr->flg_sp && !gen2 &&
+		!prmtr->usg && prmtr->flg_z)
 		n += _putchar(' ');
-	while (i++ < params->width)
-		n += _putchar(pad_char);
-	if (neg && pad_char == ' ')
+	while (i++ < prmtr->width)
+		n += _putchar(pad_ch);
+	if (gen && pad_ch == ' ')
 		n += _putchar('-');
-	if (params->flag_pls && !neg2 && pad_char == ' ' && !params->usg)
+	if (prmtr->flag_pls && !gen2 && pad_ch == ' ' && !prmtr->usg)
 		n += _putchar('+');
-	else if (!params->flag_pls && params->space_flag && !neg2 &&
-		!params->usg && !params->flg_z)
+	else if (!prmtr->flag_pls && prmtr->flag_sp && !gen2 &&
+		!prmtr->usg && !prmtr->flg_z)
 		n += _putchar(' ');
-	n += _puts(str);
+	n += _puts(s);
 	return (n);
 }
 
 /**
- * print_number_left_shift - prints no with options
- * @str:  base no as string
- * @params: parameter structure
+ * print_left - prints numbers with options
+ * @s:  base number as string
+ * @prmtr: parameter to struct
  *
- * Return: printed xter
+ * Return: prints character
  */
-int print_number_left_shift(char *str, pmtrs_t *params)
+int print_left(char *s, pmtrs_t *prmtr)
 {
-	unsigned int n = 0, neg, neg2, i = _strlen(str);
-	char pad_char = ' ';
+	unsigned int n = 0, gen, gen2, i = _strlen(str);
+	char pad_ch = ' ';
 
-	if (params->flg_z && !params->flg_ms)
-		pad_char = '0';
-	neg = neg2 = (!params->usg && *str == '-');
-	if (neg && i < params->width && pad_char == '0' && !params->flg_ms)
-		str++;
+	if (prmtr->flg_z && !prmtr->flg_ms)
+		pad_ch = '0';
+	gen = gen2 = (!prmtr->usg && *s == '-');
+	if (gen && i < prmtr->width && pad_ch == '0' && !prmtr->flg_ms)
+		s++;
 	else
-		neg = 0;
+		gen = 0;
 
-	if (params->flag_pls && !neg2 && !params->usg)
+	if (prmtr->flag_pls && !gen2 && !prmtr->usg)
 		n += _putchar('+'), i++;
-	else if (params->space_flag && !neg2 && !params->usg)
+	else if (prmtr->flg_sp && !gen2 && !prmtr->usg)
 		n += _putchar(' '), i++;
-	n += _puts(str);
-	while (i++ < params->width)
-		n += _putchar(pad_char);
+	n += _puts(s);
+	while (i++ < prmtr->width)
+		n += _putchar(pad_ch);
 	return (n);
 }
