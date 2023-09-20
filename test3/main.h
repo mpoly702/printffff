@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 #define LOWER_CASE	1
-#define CONVERT_UNSIGNED	2
+#define CONVERT_UNSIGNED 2
 
 #define BUFF_FREE -1
 #define OUTPUT_BUFFER 1024
@@ -67,35 +67,35 @@ typedef struct indicator
 	int (*f)(va_list, pmtrs_t *);
 } ind_t;
 
-int print_char(va_list ap, pmtrs_t *prmtr);
-int print_int(va_list ap, pmtrs_t *prmtr);
-int print_string(va_list ap, pmtrs_t *prmtr);
-int print_percent(va_list ap, pmtrs_t *prmtr);
-int print_S(va_list ap, pmtrs_t *prmtr);
-int (*get_specifier(char *s))(va_list ap, pmtrs_t *prmtr);
-int get_print_func(char *s, va_list ap, pmtrs_t *prmtr);
-int get_flag(char *s, pmtrs_t *prmtr);
-int get_modifier(char *s, pmtrs_t *prmtr);
-char *get_width(char *s, pmtrs_t *prmtr, va_list ap);
-int print_hex(va_list ap, pmtrs_t *prmtr);
-int print_HEX(va_list ap, pmtrs_t *prmtr);
-int print_binary(va_list ap, pmtrs_t *prmtr);
-int print_octal(va_list ap, pmtrs_t *prmtr);
-void init_params(pmtrs_t *prmtr, va_list ap);
-char *get_precision(char *p, pmtrs_t *prmtr, va_list ap);
+int print_ch(va_list ap, pmtrs_t *prmtr);
+int print_integer(va_list ap, pmtrs_t *prmtr);
+int print_str1(va_list ap, pmtrs_t *prmtr);
+int print_per(va_list ap, pmtrs_t *prmtr);
+int print_S0S(va_list ap, pmtrs_t *prmtr);
+int (*specifier_get(char *s))(va_list ap, pmtrs_t *prmtr);
+int func_get_pr(char *s, va_list ap, pmtrs_t *prmtr);
+int flg_get(char *s, pmtrs_t *prmtr);
+int modif_get(char *s, pmtrs_t *prmtr);
+char *width_get(char *s, pmtrs_t *prmtr, va_list ap);
+int hexa_print(va_list ap, pmtrs_t *prmtr);
+int HEXA_print(va_list ap, pmtrs_t *prmtr);
+int binary_out(va_list ap, pmtrs_t *prmtr);
+int octal_out(va_list ap, pmtrs_t *prmtr);
+void init_prmtr(pmtrs_t *prmtr, va_list ap);
+char *precision_get(char *p, pmtrs_t *prmtr, va_list ap);
 int _puts(char *str);
 int _putchar(int c);
-int _isdigit(int c);
+int _Adigit(int c);
 int _strlen(char *s);
-int print_number(char *str, pmtrs_t *prmtr);
-int print_number_right_shift(char *str, pmtrs_t *prmtr);
-int print_number_left_shift(char *str, pmtrs_t *prmtr);
+int print_num(char *str, pmtrs_t *prmtr);
+int print_shift(char *s, pmtrs_t *prmtr);
+int print_left_shift(char *s, pmtrs_t *prmtr);
 int _printf(const char *format, ...);
-int print_from_to(char *start, char *stop, char *except);
-int print_rev(va_list ap, pmtrs_t *prmtr);
-int print_rot13(va_list ap, pmtrs_t *prmtr);
-char *convert(long int num, int base, int flags, pmtrs_t *prmtr);
-int print_unsigned(va_list ap, pmtrs_t *prmtr);
-int print_address(va_list ap, pmtrs_t *prmtr);
+int print_w(char *begin, char *end, char *except);
+int rev_str(va_list ap, pmtrs_t *prmtr);
+int print_root13(va_list ap, pmtrs_t *prmtr);
+char *transform(long int num, int base, int flags, pmtrs_t *prmtr);
+int unsigned_print(va_list ap, pmtrs_t *prmtr);
+int print_locate(va_list ap, pmtrs_t *prmtr);
 
 #endif
