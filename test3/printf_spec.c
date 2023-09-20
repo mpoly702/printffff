@@ -72,7 +72,7 @@ int flg_get(char *s, pmtrs_t *prmtr)
 	switch (*s)
 	{
 		case '+':
-			i = prmtr->flag_pls = 1;
+			i = prmtr->flg_pls = 1;
 			break;
 		case ' ':
 			i = prmtr->flg_sp = 1;
