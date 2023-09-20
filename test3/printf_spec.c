@@ -14,12 +14,12 @@ int (*specifier_get(char *s))(va_list ap, pmtrs_t *prmtr)
 		{"d", print_integer},
 		{"i", print_integer},
 		{"s", print_str1},
-		{"%", print_percent},
-		{"b", print_binary},
-		{"o", print_octal},
+		{"%", print_per},
+		{"b", binary_out},
+		{"o", octal_out},
 		{"u", unsigned_print},
-		{"x", print_hex},
-		{"X", print_HEX},
+		{"x", hexa_print},
+		{"X", HEXA_print},
 		{"p", print_locate},
 		{"S", print_SOS},
 		{"r", rev_str},
@@ -58,13 +58,13 @@ int func_get_print(char *s, va_list ap, pmtrs_t *prmtr)
 }
 
 /**
- * get_flag - finds flag functions
+ * flg_get - lookup flag functions
  * @s:  format string
- * @params: parameters struct
- * Return: if the flag was valid
+ * @prmtr: parameter to struct
+ * Return: valid flag
  */
 
-int get_flag(char *s, pmtrs_t *params)
+int flg_get(char *s, pmtrs_t *prmtr)
 
 {
 	int i = 0;
@@ -72,69 +72,69 @@ int get_flag(char *s, pmtrs_t *params)
 	switch (*s)
 	{
 		case '+':
-			i = params->flag_pls = 1;
+			i = prmtr->flag_pls = 1;
 			break;
 		case ' ':
-			i = params->space_flag = 1;
+			i = prmtr->flg_sp = 1;
 			break;
 		case '#':
-			i = params->flg_htag = 1;
+			i = prmtr->flg_htag = 1;
 			break;
 		case '-':
-			i = params->flg_ms = 1;
+			i = prmtr->flg_ms = 1;
 			break;
 		case '0':
-			i = params->flg_z = 1;
+			i = prmtr->flg_z = 1;
 			break;
 	}
 	return (i);
 }
 
 /**
- * get_modifier - finds  modifier function
- * @s: string format
- * @params: parameter struct
- * Return: if modifier valid
+ * modif_get - searches for modifier function
+ * @s: a string
+ * @prmtr: parameter to struct
+ * Return: valid modifier
  */
 
-int get_modifier(char *s, pmtrs_t *params)
+int modif_get(char *s, pmtrs_t *prmtr)
 {
 	int i = 0;
 
 	switch (*s)
 	{
 		case 'h':
-			i = params->modi_h = 1;
+			i = prmtr->modi_h = 1;
 			break;
 		case 'l':
-			i = params->l_modifier = 1;
+			i = prmtr->modi_l = 1;
 			break;
 	}
 	return (i);
 }
 
 /**
- * get_width - retrieves width from  format string
+ * width_get - extracts width from  format string
  * @s: format string
- * @params: parameters structure
+ * @prmtr: parameter to struct
  * @ap: argument pointer
  * Return:a new pointer
  */
 
-char *get_width(char *s, pmtrs_t *params, va_list ap)
+char *width_get(char *s, pmtrs_t *prmtr, va_list ap)
 {
-	int d = 0;
+	int di = 0;
 
 	if (*s == '*')
 	{
-		d = va_arg(ap, int);
+		di = va_arg(ap, int);
 		s++;
 	}
 	else
 	{
-		while (_isdigit(*s))
-			d = d * 10 + (*s++ - '0');
+		while (_Adigit(*s))
+			di = di * 10 + (*s++ - '0');
 	}
-	params->width = d;
+	prmtr->width = d;
 	return (s);
 }
