@@ -13,7 +13,7 @@ int hexa_print(va_list ap, pmtrs_t *prmtr)
 	int ci = 0;
 	char *str;
 
-	if (prmtr->modif_l)
+	if (prmtr->modi_l)
 		li = (unsigned long)va_arg(ap, unsigned long);
 	else if (prmtr->modi_h)
 		li = (unsigned short int)va_arg(ap, unsigned int);
@@ -69,7 +69,7 @@ int HEXA_print(va_list ap, pmtrs_t *prmtr)
 int binary_out(va_list ap, pmtrs_t prmtr)
 {
 	unsigned int n = va_arg(ap, unsigned int);
-	char *str = convert(n, 2, UNSIGNED_CONV, prmtr);
+	char *str = transform(n, 2, UNSIGNED_CONV, prmtr);
 	int ci = 0;
 
 	if (prmtr->flg_htag && n)
