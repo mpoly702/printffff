@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * _printf - prints/input into std output
- * @format: Format of the string
+ * _printf - prints string to std output
+ * @format: the string format
  * Return: no of printed bytes
  */
 
@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	int add = 0;
 	va_list ap;
-	char *p, *start;
+	char *p, *begin;
 
 	pmtrs_t prmtr = INIT_PMTRS;
 
@@ -29,23 +29,23 @@ int _printf(const char *format, ...)
 			add += _putchar(*p);
 			continue;
 		}
-		start = p;
+		begin = p;
 		p++;
 		while (flg_get(p, &prmtr))
 		{
 			p++;
 		}
 		p = width_get(p, &params, ap);
-		p = get_precision(p, &params, ap);
-		if (get_modifier(p, &params))
+		p = precision_get(p, &params, ap);
+		if (modif_get(p, &params))
 			p++;
-		if (!get_specifier(p))
-			sum += print_from_to(start, p,
-					params.modi_l || params.modi_h ? p - 1 : 0);
+		if (!specifier_get(p))
+			sum += print_w(begin, p,
+					prmtr.modi_l || prmtr.modi_h ? p - 1 : 0);
 		else
-			sum += get_print_func(p, ap, &params);
+			add += func_get_pr(p, ap, &prmtr);
 	}
 	_putchar(BUFF_FREE);
 	va_end(ap);
-	return (sum);
+	return (add);
 }
