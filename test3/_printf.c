@@ -9,11 +9,11 @@
 int _printf(const char *format, ...)
 
 {
-	int sum = 0;
+	int add = 0;
 	va_list ap;
 	char *p, *start;
 
-	pmtrs_t params = INIT_PMTRS;
+	pmtrs_t prmtr = INIT_PMTRS;
 
 	va_start(ap, format);
 
@@ -23,19 +23,19 @@ int _printf(const char *format, ...)
 		return (-1);
 	for (p = (char *)format; *p; p++)
 	{
-		init_params(&params, ap);
+		init_params(&prmtr, ap);
 		if (*p != '%')
 		{
-			sum += _putchar(*p);
+			add += _putchar(*p);
 			continue;
 		}
 		start = p;
 		p++;
-		while (get_flag(p, &params))
+		while (flg_get(p, &prmtr))
 		{
 			p++;
 		}
-		p = get_width(p, &params, ap);
+		p = width_get(p, &params, ap);
 		p = get_precision(p, &params, ap);
 		if (get_modifier(p, &params))
 			p++;
