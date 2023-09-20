@@ -55,7 +55,7 @@ int unsigned_print(va_list ap, pmtrs_t *prmtr)
 	else
 		li = (unsigned int)va_arg(ap, unsigned int);
 	prmtr->usg = 1;
-	return (print_num(convert(l, 10, UNSIGNED_CONV, prmtr), prmtr));
+	return (print_num(transform(l, 10, UNSIGNED_CONV, prmtr), prmtr));
 }
 
 
@@ -68,7 +68,7 @@ int unsigned_print(va_list ap, pmtrs_t *prmtr)
  * Return: This is the bite to print
  *
  */
-int print_address(va_list ap, pmtrs_t *prmtr)
+int print_locate(va_list ap, pmtrs_t *prmtr)
 {
 	unsigned long int n = va_arg(ap, unsigned long int);
 	char *str;
