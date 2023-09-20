@@ -10,8 +10,7 @@ int _printf(const char * const format, ...)
         {'s', Print_String},
         {'c', Print_Char}
   };
-
-void customPrintf(const char *format, ...) {
+	
     va_list args;
     va_start(args, format);
     int i;
