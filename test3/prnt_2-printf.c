@@ -1,106 +1,106 @@
 #include "main.h"
 
 /**
- * print_hex - prints the  unsigned hex in lowercase
- * @ap: argument pointer
- * @params: parameters struct
+ * hexa_print - prints the  unsigned hexadecimal in lowercase
+ * @ap: points to argument
+ * @params: parameter to struct
  *
- * Return: This is the bytes printed
+ * Return: This is the number of bytes printed
  */
-int print_hex(va_list ap, pmtrs_t *params)
+int hexa_print(va_list ap, pmtrs_t *prmtr)
 {
-	unsigned long l;
-	int c = 0;
+	unsigned long li;
+	int ci = 0;
 	char *str;
 
-	if (params->l_modifier)
-		l = (unsigned long)va_arg(ap, unsigned long);
-	else if (params->modi_h)
-		l = (unsigned short int)va_arg(ap, unsigned int);
+	if (prmtr->modif_l)
+		li = (unsigned long)va_arg(ap, unsigned long);
+	else if (prmtr->modi_h)
+		li = (unsigned short int)va_arg(ap, unsigned int);
 	else
-		l = (unsigned int)va_arg(ap, unsigned int);
+		li = (unsigned int)va_arg(ap, unsigned int);
 
-	str = convert(l, 16, UNSIGNED_CONV | LOWER_CASE, params);
-	if (params->flg_htag && l)
+	str = transform(l, 16, UNSIGNED_CONV | LOWER_CASE, prmtr);
+	if (prmtr->flg_htag && l)
 	{
 		*--str = 'x';
 		*--str = '0';
 	}
-	params->usg = 1;
-	return (c += print_number(str, params));
+	prmtr->usg = 1;
+	return (c += print_num(str, prmtr));
 }
 
 /**
- * print_HEX - prints the unsigned hex no in uppercase
- * @ap: argument pointer
- * @params: parameters struct
+ * HEXA_print - prints the unsigned hexa number in uppercase
+ * @ap: points to argument
+ * @params: parameter to struct
  *
- * Return: This is the bytes printed
+ * Return: This is the number of  bytes to print
  */
-int print_HEX(va_list ap, pmtrs_t *params)
+int HEXA_print(va_list ap, pmtrs_t *prmtr)
 {
-	unsigned long l;
-	int c = 0;
+	unsigned long li;
+	int ci = 0;
 	char *str;
 
-	if (params->l_modifier)
-		l = (unsigned long)va_arg(ap, unsigned long);
-	else if (params->modi_h)
-		l = (unsigned short int)va_arg(ap, unsigned int);
+	if (params->modi_l)
+		li = (unsigned long)va_arg(ap, unsigned long);
+	else if (prmtr->modi_h)
+		li = (unsigned short int)va_arg(ap, unsigned int);
 	else
-		l = (unsigned int)va_arg(ap, unsigned int);
+		li = (unsigned int)va_arg(ap, unsigned int);
 
-	str = convert(l, 16, UNSIGNED_CONV, params);
-	if (params->flg_htag && l)
+	str = transform(l, 16, UNSIGNED_CONV, prmtr);
+	if (prmtr->flg_htag && l)
 	{
 		*--str = 'X';
 		*--str = '0';
 	}
-	params->usg = 1;
-	return (c += print_number(str, params));
+	prmtr->usg = 1;
+	return (ci += print_num(str, prmtr));
 }
 /**
- * print_binary - This prints the  unsigned binary no
- * @ap: argument pointer
- * @params: parameters struct
+ * binary_out - This prints the  unsigned binary numberssss
+ * @ap: points to an argument
+ * @prmtr: parameter to a struct
  *
- * Return: This is the bytes printed
+ * Return: bytes printed
  */
-int print_binary(va_list ap, pmtrs_t *params)
+int binary_out(va_list ap, pmtrs_t prmtr)
 {
 	unsigned int n = va_arg(ap, unsigned int);
-	char *str = convert(n, 2, UNSIGNED_CONV, params);
-	int c = 0;
+	char *str = convert(n, 2, UNSIGNED_CONV, prmtr);
+	int ci = 0;
 
-	if (params->flg_htag && n)
+	if (prmtr->flg_htag && n)
 		*--str = '0';
-	params->usg = 1;
-	return (c += print_number(str, params));
+	prmtr->usg = 1;
+	return (c += print_num(str, prmtr));
 }
 
 /**
- * print_octal - This prints unsigned octal no
- * @ap: Argument pointer
- * @params: parameters struct
+ * octal_out - This prints unsigned octal no
+ * @ap: points to argument
+ * @prmtr: parameter to struct
  *
- * Return:This is  bytes printed
+ * Return:This is  bytes printed to stdout
  */
-int print_octal(va_list ap, pmtrs_t *params)
+int octal_out(va_list ap, pmtrs_t *prmtr)
 {
 	unsigned long l;
 	char *str;
 	int c = 0;
 
-	if (params->l_modifier)
-		l = (unsigned long)va_arg(ap, unsigned long);
-	else if (params->modi_h)
-		l = (unsigned short int)va_arg(ap, unsigned int);
+	if (prmtr->modi_l)
+		li = (unsigned long)va_arg(ap, unsigned long);
+	else if (prmtr->modi_h)
+		li = (unsigned short int)va_arg(ap, unsigned int);
 	else
-		l = (unsigned int)va_arg(ap, unsigned int);
-	str = convert(l, 8, UNSIGNED_CONV, params);
+		li = (unsigned int)va_arg(ap, unsigned int);
+	str = transform(l, 8, UNSIGNED_CONV, prmtr);
 
-	if (params->flg_htag && l)
+	if (prmtr->flg_htag && l)
 		*--str = '0';
-	params->usg = 1;
-	return (c += print_number(str, params));
+	prmtr->usg = 1;
+	return (c += print_num(str, prmtr));
 }
