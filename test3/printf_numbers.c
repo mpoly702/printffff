@@ -15,7 +15,7 @@ int _Adigit(int ch)
  * _strlen - returns string length
  * @str: string length to check
  *
- * Return:blength of string
+ * Return:length of string
  */
 int _strlen(char *str)
 {
@@ -76,23 +76,23 @@ int print_shift(char *s, pmtrs_t *prmtr)
 		s++;
 	else
 		gen = 0;
-	if ((prmtr->flag_pls && !gen2) ||
-		(!prmtr->flag_pls && prmtr->flg_sp && !gen2))
+	if ((prmtr->flg_pls && !gen2) ||
+		(!prmtr->flg_pls && prmtr->flg_sp && !gen2))
 		i++;
 	if (gen && pad_ch == '0')
 		n += _putchar('-');
-	if (prmtr->flag_pls && !gen2 && pad_ch == '0' && !prmtr->usg)
+	if (prmtr->flg_pls && !gen2 && pad_ch == '0' && !prmtr->usg)
 		n += _putchar('+');
-	else if (!prmtr->flag_pls && prmtr->flg_sp && !gen2 &&
+	else if (!prmtr->flg_pls && prmtr->flg_sp && !gen2 &&
 		!prmtr->usg && prmtr->flg_z)
 		n += _putchar(' ');
 	while (i++ < prmtr->width)
 		n += _putchar(pad_ch);
 	if (gen && pad_ch == ' ')
 		n += _putchar('-');
-	if (prmtr->flag_pls && !gen2 && pad_ch == ' ' && !prmtr->usg)
+	if (prmtr->flg_pls && !gen2 && pad_ch == ' ' && !prmtr->usg)
 		n += _putchar('+');
-	else if (!prmtr->flag_pls && prmtr->flag_sp && !gen2 &&
+	else if (!prmtr->flg_pls && prmtr->flg_sp && !gen2 &&
 		!prmtr->usg && !prmtr->flg_z)
 		n += _putchar(' ');
 	n += _puts(s);
@@ -119,7 +119,7 @@ int print_left(char *s, pmtrs_t *prmtr)
 	else
 		gen = 0;
 
-	if (prmtr->flag_pls && !gen2 && !prmtr->usg)
+	if (prmtr->flg_pls && !gen2 && !prmtr->usg)
 		n += _putchar('+'), i++;
 	else if (prmtr->flg_sp && !gen2 && !prmtr->usg)
 		n += _putchar(' '), i++;
