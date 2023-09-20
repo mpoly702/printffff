@@ -9,10 +9,11 @@
 
 
 
-typedef struct format {
-	char *id;
-	int (*f)();
-}function_strings;
+struct SpecifierFunctionMap 
+{
+	char specifier;
+	void (*function)(va_list);
+};
 
 int _putchar(char c);
 void Print_String(va_list args);
