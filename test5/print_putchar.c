@@ -20,19 +20,20 @@ return (str - a);
 * @c: char to print
 *
 * Return: On success 1 should be returned.
-* -1 is returned when error occurs and error is set appropriately.
+* -1 is returned when error occurs and error is set appropriately
+* and freees memory in the case of being done
 */
 int _putchar(int c)
 {
 static int i;
-static char buf[OUTPUT_BUF_SIZE];
+static char buf[SIZE_BUF];
 
-if (c == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
+if (c == FREE_BUF || i >= SIZE_BUF)
 {
 write(1, buf, i);
 i = 0;
 }
-if (c != BUF_FLUSH)
+if (c != FREE_BUF)
 buf[i++] = c;
 return (1);
 }
