@@ -7,15 +7,22 @@
 
 void Print_String(const char *str)
 {
-    if (str == NULL) {
-        _puts("(null)"); /*Print "(null)" if the string is NULL*/
-    } 
-    else 
+    if (str == NULL) 
     {
-        /*Iterate through the characters of the string and print them*/
-        for (const char *p = str; *p != '\0'; p++) 
+       str = "(null)";
+	    int i, len;
+	    
+		len = _strlen(s);
+		for (i = 0; i < len; i++)
+			_putchar(str[i]);
+		return (len);
+    }
+    else
+    {
+        const char *p; /*Declare the variable before the loop*/
+        for (p = str; *p != '\0'; p++)
 	{
-            _putchar(*p);
+            putchar(*p);
         }
     }
 }
