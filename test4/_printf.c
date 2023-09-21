@@ -23,7 +23,7 @@ int _printf(const char * const format, ...)
 		     i++; /* Move to the next character after '%' */
 		     if (format[i] == 's')
 		     {
-			     Print_String(args);
+			     Print_String(args, *params);
 			     break;
 		     } else if (format[i] == 'c')
 		     {
