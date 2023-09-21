@@ -7,95 +7,95 @@
 #include <limits.h>
 #include <stdlib.h>
 
-#define OUTPUT_BUF_SIZE 1024
-#define BUF_FLUSH -1
+#define SIZE_BUF 1024
+#define BUF_FREE -1
 
-#define FIELD_BUF_SIZE 50
+#define BUF_FIELD 50
 
-#define NULL_STRING "(null)"
+#define STR_NIL "(null)"
 
-#define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+#define INIT_PMTRS {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
-#define CONVERT_LOWERCASE	1
-#define CONVERT_UNSIGNED	2
+#define LOWER_CASE	1
+#define USG_CONVT	2
 
 /**
  * struct parameters - parameters struct
  *
- * @unsign: flag if unsigned value
+ * @usg: flag if unsigned value
  *
- * @plus_flag: on if plus_flag specified
- * @space_flag: on if hashtag_flag specified
- * @hashtag_flag: on if _flag specified
- * @zero_flag: on if _flag specified
- * @minus_flag: on if _flag specified
+ * @flg_pls: on if plus_flag specified
+ * @flg_sp: on if hashtag_flag specified
+ * @flg_htag: on if _flag specified
+ * @flg_z: on if _flag specified
+ * @flg_ms: on if _flag specified
  *
  * @width: field width specified
  * @precision: field precision specified
  *
- * @h_modifier: on if h_modifier is specified
- * @l_modifier: on if l_modifier is specified
+ * @modi_h: on for modi_h is specified
+ * @modi_l: on for modi_l is specified
  *
  */
 
-typedef struct parameters
+typedef struct pmeter
 {
-	unsigned int unsign			: 1;
+	unsigned int usg		: 1;
 
-	unsigned int plus_flag		: 1;
-	unsigned int space_flag		: 1;
-	unsigned int hashtag_flag	: 1;
-	unsigned int zero_flag		: 1;
-	unsigned int minus_flag		: 1;
+	unsigned int flg_pls		: 1;
+	unsigned int flg_sp		: 1;
+	unsigned int flg_htag		: 1;
+	unsigned int flg_z		: 1;
+	unsigned int flg_ms		: 1;
 
 	unsigned int width;
 	unsigned int precision;
 
-	unsigned int h_modifier		: 1;
-	unsigned int l_modifier		: 1;
-} params_t;
+	unsigned int modi_h		: 1;
+	unsigned int modi_l		: 1;
+} pmtrs_t
 
 /**
  * struct specifier - Struct token
  *
- * @specifier: format token
- * @f: The function associated
+ * @indicator: format token
+ * @f: function pointer
  */
-typedef struct specifier
+typedef struct indicator
 {
-	char *specifier;
-	int (*f)(va_list, params_t *);
-} specifier_t;
+	char *indicator;
+	int (*f)(va_list, pmtrs_t *);
+} ind_t;
 
-int print_char(va_list ap, params_t *params);
-int print_int(va_list ap, params_t *params);
-int print_string(va_list ap, params_t *params);
-int print_percent(va_list ap, params_t *params);
-int print_S(va_list ap, params_t *params);
-int (*get_specifier(char *s))(va_list ap, params_t *params);
-int get_print_func(char *s, va_list ap, params_t *params);
-int get_flag(char *s, params_t *params);
-int get_modifier(char *s, params_t *params);
-char *get_width(char *s, params_t *params, va_list ap);
-int print_hex(va_list ap, params_t *params);
-int print_HEX(va_list ap, params_t *params);
-int print_binary(va_list ap, params_t *params);
-int print_octal(va_list ap, params_t *params);
-void init_params(params_t *params, va_list ap);
-char *get_precision(char *p, params_t *params, va_list ap);
+int print_ch(va_list args, pmtrs_t *pmtrs);
+int print_integer(va_list args, pmtrs_t *pmtrs);
+int print_string(va_list args, pmtrs_t *pmtrs);
+int print_per(va_list args, pmtrs_t *pmtrs);
+int print_SOS(va_list args, pmtrs_t *pmtrs);
+int (*specifier_get(char *s))(va_list args, pmtrs_t *pmtrs);
+int func_get_print(char *s, va_list args, pmtrs_t *pmtrs);
+int flg_get(char *s, pmtrs_t *pmtrs);
+int modi_get(char *s, pmtrs_t *pmtrs);
+char *width_get(char *s, pmtrs_t *pmtrs, va_list args);
+int hexa_print(va_list args, pmtrs_t *pmtrs);
+int HEXA_print(va_list args, pmtrs_t *pmtrs);
+int binary_out(va_list args, pmtrs_t *pmtrs);
+int octal_out(va_list args, pmtrs_t *pmtrs);
+void init_pmtrs(pmtrs_t *pmtrs, va_list args);
+char *prec_get(char *p, pmtrs_t *pmtrs, va_list args);
 int _puts(char *str);
 int _putchar(int c);
-int _isdigit(int c);
+int _Adigit(int c);
 int _strlen(char *s);
-int print_number(char *str, params_t *params);
-int print_number_right_shift(char *str, params_t *params);
-int print_number_left_shift(char *str, params_t *params);
+int print_num(char *str, pmtrs_t *pmtrs);
+int print_shift(char *s, pmtrs_t *pmtrs);
+int print_left(char *s, pmtrs_t *pmtrs);
 int _printf(const char *format, ...);
-int print_from_to(char *start, char *stop, char *except);
-int print_rev(va_list ap, params_t *params);
-int print_rot13(va_list ap, params_t *params);
-char *convert(long int num, int base, int flags, params_t *params);
-int print_unsigned(va_list ap, params_t *params);
-int print_address(va_list ap, params_t *params);
+int print_w(char *begin, char *end, char *except);
+int rev_str(va_list args, pmtrs_t *pmtrs);
+int print_root(va_list args, pmtrs_t *pmtrs);
+char *transform(long int num, int base, int flags, pmtrs_t *pmtrs);
+int usg_print(va_list args, pmtrs_t *pmtrs);
+int print_locate(va_list args, pmtrs_t *pmtrs);
 
 #endif
