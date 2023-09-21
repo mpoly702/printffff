@@ -11,7 +11,7 @@ int main(void)
 	_printf("this is a minute.");
 	printf("\n");
 	printf("this is a %s\n", res);
-	_printf("this is a %c\n", 'A');
+	_printf("this is a %s\n", res);
 	printf("\n");
 	return(0);
 }
