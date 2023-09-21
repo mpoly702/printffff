@@ -6,19 +6,20 @@
 * @stop: the adress it stops
 * @except: excluding address
 *
+*
 * Return: no of bytes printed
 */
-int print_from_to(char *start, char *stop, char *except)
+int print_w(char *begin, char *end, char *except)
 {
-int sum = 0;
+int add = 0;
 
-while (start <= stop)
+while (begin <= end)
 {
-if (start != except)
-sum += _putchar(*start);
-start++;
+if (begin != end)
+add += _putchar(*begin);
+begin++;
 }
-return (sum);
+return (add);
 }
 
 /**
@@ -28,48 +29,48 @@ return (sum);
 *
 * Return: no of  bytes printed
 */
-int print_rev(va_list ap, params_t *params)
+int rev_string(va_list args, pmtrs_t *pmtrs)
 {
-int len, sum = 0;
-char *str = va_arg(ap, char *);
-(void)params;
+int li, add = 0;
+char *str = va_arg(args, char *);
+(void)pmtrs;
 
 if (str)
 {
-for (len = 0; *str; str++)
-len++;
+for (li = 0; *str; str++)
+li++;
 str--;
-for (; len > 0; len--, str--)
-sum += _putchar(*str);
+for (; li > 0; li--, str--)
+add += _putchar(*str);
 }
-return (sum);
+return (add);
 }
 
 /**
-* print_rot13 - This prints the string in rot13
-* @ap: string
-* @params: parameters struct
+* print_root - This prints the string in rot13
+* @args: string
+* @pmtrs: parameters struct
 *
 * Return: no of the bytes printed
 */
-int print_rot13(va_list ap, params_t *params)
+int print_root(va_list args, pmtrs_t *pmtrs)
 {
-int i, index;
+int i, indice;
 int count = 0;
-char arr[] =
+char array[] =
 "NOPQRSTUVWXYZABCDEFGHIJKLM      nopqrstuvwxyzabcdefghijklm";
-char *a = va_arg(ap, char *);
-(void)params;
+char *a = va_arg(args, char *);
+(void)pmtrs;
 
 i = 0;
-index = 0;
+indice = 0;
 while (a[i])
 {
 if ((a[i] >= 'A' && a[i] <= 'Z')
 || (a[i] >= 'a' && a[i] <= 'z'))
 {
-index = a[i] - 65;
-count += _putchar(arr[index]);
+indice = a[i] - 65;
+count += _putchar(array[index]);
 }
 else
 count += _putchar(a[i]);
