@@ -5,25 +5,17 @@
  * Return: the length of the string.
  */
 
-int Print_String(va_list args)
+void Print_String(const char *str)
 {
-	char *s;
-	int i, len;
-
-	s = va_arg(args, char *);
-	if (s == NULL)
+    if (str == NULL) {
+        _puts("(null)"); /*Print "(null)" if the string is NULL*/
+    } 
+    else 
+    {
+        /*Iterate through the characters of the string and print them*/
+        for (const char *p = str; *p != '\0'; p++) 
 	{
-		s = "(null)";
-		len = _strlen(s);
-		for (i = 0; i < len; i++)
-			_putchar(s[i]);
-		return (len);
-	}
-	else
-	{
-		len = _strlen(s);
-		for (i = 0; i < len; i++)
-			_putchar(s[i]);
-		return (len);
-	}
+            _putchar(*p);
+        }
+    }
 }
