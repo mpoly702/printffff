@@ -1,24 +1,24 @@
 #include "main.h"
 
 /**
-* print_char - This prints char
+* print_ch - This prints char
 * @ap: argument pointer
 * @params: parameters structure
 *
 * Return: The no char to be  printed
 */
-int print_char(va_list ap, params_t *params)
+int print_ch(va_list args, pmtrs_t *pmtrs)
 {
-char pad_char = ' ';
-unsigned int pad = 1, sum = 0, ch = va_arg(ap, int);
+char pad_ch = ' ';
+unsigned int padd = 1, add = 0, ch = va_arg(args, int);
 
-if (params->minus_flag)
-sum += _putchar(ch);
-while (pad++ < params->width)
-sum += _putchar(pad_char);
-if (!params->minus_flag)
-sum += _putchar(ch);
-return (sum);
+if (pmtrs->flg_ms)
+add += _putchar(ch);
+while (padd++ < pmtrs->width)
+add += _putchar(pad_ch);
+if (!pmtrs->flg_ms)
+add += _putchar(ch);
+return (add);
 }
 
 /**
@@ -28,17 +28,17 @@ return (sum);
 *
 * Return: no xter  printed
 */
-int print_int(va_list ap, params_t *params)
+int print_integer(va_list args, pmtrs_t *pmtrs)
 {
-long l;
+long li;
 
-if (params->l_modifier)
-l = va_arg(ap, long);
-else if (params->h_modifier)
-l = (short int)va_arg(ap, int);
+if (pmtrs->modi_l)
+li = va_arg(args, long);
+else if (pmtrs->modi_h)
+li = (short int)va_arg(args, int);
 else
-l = (int)va_arg(ap, int);
-return (print_number(convert(l, 10, 0, params), params));
+li = (int)va_arg(args, int);
+return (print_num(transform(l, 10, 0, pmtrs), pmtrs));
 }
 
 /**
@@ -48,39 +48,39 @@ return (print_number(convert(l, 10, 0, params), params));
 *
 * Return: The no character to be printed
 */
-int print_string(va_list ap, params_t *params)
+int print_str1(va_list args, pmtrs_t *pmtrs)
 {
-char *str = va_arg(ap, char *), pad_char = ' ';
-unsigned int pad = 0, sum = 0, i = 0, j;
+char *str = va_arg(args, char *), pad_ch = ' ';
+unsigned int padd = 0, add = 0, i = 0, j;
 
-(void)params;
+(void)pmtrs;
 switch ((int)(!str))
 case 1:
-str = NULL_STRING;
+str = STR_NULL;
 
-j = pad = _strlen(str);
-if (params->precision < pad)
-j = pad = params->precision;
+j = padd = _strlen(str);
+if (pmtrs->precision < padd)
+j = padd = pmtrs->precision;
 
-if (params->minus_flag)
+if (pmtrs->flg_ms)
 {
-if (params->precision != UINT_MAX)
-for (i = 0; i < pad; i++)
-sum += _putchar(*str++);
+if (pmtrs->precision != UINT_MAX)
+for (i = 0; i < padd; i++)
+add += _putchar(*str++);
 else
-sum += _puts(str);
+add += _puts(str);
 }
-while (j++ < params->width)
-sum += _putchar(pad_char);
-if (!params->minus_flag)
+while (j++ < pmtrs->width)
+add += _putchar(pad_ch);
+if (!pmtrs->flg_ms)
 {
-if (params->precision != UINT_MAX)
-for (i = 0; i < pad; i++)
-sum += _putchar(*str++);
+if (pmtrs->precision != UINT_MAX)
+for (i = 0; i < padd; i++)
+add += _putchar(*str++);
 else
-sum += _puts(str);
+add += _puts(str);
 }
-return (sum);
+return (add);
 }
 
 /**
@@ -90,10 +90,10 @@ return (sum);
 *
 * Return: no of  printed xter
 */
-int print_percent(va_list ap, params_t *params)
+int print_per(va_list args, pmtrs_t *pmtrs)
 {
-(void)ap;
-(void)params;
+(void)args;
+(void)pmtrs;
 return (_putchar('%'));
 }
 
@@ -104,29 +104,29 @@ return (_putchar('%'));
 *
 * Return: no of character printed
 */
-int print_S(va_list ap, params_t *params)
+int print_SOS(va_list args, pmtrs_t *pmtrs)
 {
-char *str = va_arg(ap, char *);
-char *hex;
-int sum = 0;
+char *str = va_arg(args, char *);
+char *hexa;
+int add = 0;
 
 if ((int)(!str))
-return (_puts(NULL_STRING));
+return (_puts(STR_NIL));
 for (; *str; str++)
 {
 if ((*str > 0 && *str < 32) || *str >= 127)
 {
-sum += _putchar('\\');
-sum += _putchar('x');
-hex = convert(*str, 16, 0, params);
-if (!hex[1])
-sum += _putchar('0');
-sum += _puts(hex);
+add += _putchar('\\');
+add += _putchar('x');
+hexa = transform(*str, 16, 0, pmtrs);
+if (!hexa1])
+add += _putchar('0');
+add += _puts(hexa);
 }
 else
 {
-sum += _putchar(*str);
+add += _putchar(*str);
 }
 }
-return (sum);
+return (add);
 }
