@@ -6,34 +6,34 @@
 * Return:no of bytes that was  printed
 */
 
-int (*get_specifier(char *s))(va_list ap, params_t *params)
+int (*specifier_get(char *s))(va_list args, pmtrs_t *pmtrs)
 
 {
-specifier_t specifiers[] = {
-{"c", print_char},
-{"d", print_int},
-{"i", print_int},
-{"s", print_string},
-{"%", print_percent},
-{"b", print_binary},
-{"o", print_octal},
-{"u", print_unsigned},
-{"x", print_hex},
-{"X", print_HEX},
-{"p", print_address},
-{"S", print_S},
-{"r", print_rev},
-{"R", print_rot13},
+ind_t indicators[] = {
+{"c", print_ch},
+{"d", print_integer},
+{"i", print_integer},
+{"s", print_str1},
+{"%", print_per},
+{"b", binary_out},
+{"o", octal_out},
+{"u", usg_print},
+{"x", hexa_print},
+{"X", HEXA_print},
+{"p", print_locate},
+{"S", print_SOS},
+{"r", rev_str},
+{"R", print_root},
 {NULL, NULL}
 };
 
 int i = 0;
 
-while (specifiers[i].specifier)
+while (indicators[i].indicator)
 {
-if (*s == specifiers[i].specifier[0])
+if (*s == indicators[i].indicator[0])
 {
-return (specifiers[i].f);
+return (indicators[i].f);
 }
 i++;
 }
@@ -48,12 +48,12 @@ return (NULL);
 * Return: no of bytes printed
 */
 
-int get_print_func(char *s, va_list ap, params_t *params)
+int func_get_pr(char *s, va_list args,pmtrs_t *pmtrs)
 {
-int (*f)(va_list, params_t *) = get_specifier(s);
+int (*f)(va_list, pmtrs_t *) = specifier_get(s);
 
 if (f)
-return (f(ap, params));
+return (f(args, pmtrs));
 return (0);
 }
 
@@ -64,7 +64,7 @@ return (0);
 * Return: if the flag was valid
 */
 
-int get_flag(char *s, params_t *params)
+int flg_get(char *s, pmtrs_t *pmtrs)
 
 {
 int i = 0;
@@ -72,19 +72,19 @@ int i = 0;
 switch (*s)
 {
 case '+':
-i = params->plus_flag = 1;
+i = pmtrs->flg_pls = 1;
 break;
 case ' ':
-i = params->space_flag = 1;
+i = pmtrs->flg_sp = 1;
 break;
 case '#':
-i = params->hashtag_flag = 1;
+i = pmtrs->flg_htag = 1;
 break;
 case '-':
-i = params->minus_flag = 1;
+i = pmtrs->flg_ms = 1;
 break;
 case '0':
-i = params->zero_flag = 1;
+i = params->flg_z = 1;
 break;
 }
 return (i);
@@ -97,17 +97,17 @@ return (i);
 * Return: if modifier valid
 */
 
-int get_modifier(char *s, params_t *params)
+int modif_get(char *s, pmtrs_t *pmtrs)
 {
 int i = 0;
 
 switch (*s)
 {
 case 'h':
-i = params->h_modifier = 1;
+i = pmtrs->modi_h = 1;
 break;
 case 'l':
-i = params->l_modifier = 1;
+i = pmtrs->modi_l = 1;
 break;
 }
 return (i);
@@ -121,20 +121,20 @@ return (i);
 * Return:a new pointer
 */
 
-char *get_width(char *s, params_t *params, va_list ap)
+char *width_get(char *s, pmtrs_t *pmtrs, va_list args)
 {
-int d = 0;
+int y = 0;
 
 if (*s == '*')
 {
-d = va_arg(ap, int);
+y = va_arg(args, int);
 s++;
 }
 else
 {
-while (_isdigit(*s))
-d = d * 10 + (*s++ - '0');
+while (_Adigit(*s))
+y = y * 10 + (*s++ - '0');
 }
-params->width = d;
+pmtrs->width = y;
 return (s);
 }
