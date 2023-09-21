@@ -8,10 +8,15 @@
  */
 void Print_String(va_list args)
 {
-	char *str = va_arg(args, char *);
-	while (*str != '\0')
-	{
-		_putchar(*str);
-		str++;
-	}
+    char *str = va_arg(args, char *);
+    
+    if (str == NULL) {
+        return; /*Handle NULL pointer gracefully*/
+    }
+
+    while (*str != '\0')
+    {
+        _putchar(*str);
+        str++;
+    }
 }
