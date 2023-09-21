@@ -8,23 +8,23 @@
 * Return:the  new pointer
 */
 
-char *get_prec(char *s, params_t *params, va_list ap)
+char *prec_get(char *s, params_t *params, va_list args)
 {
-int d = 0;
+int y = 0;
 
 if (*s != '.')
 return (s);
 s++;
 if (*s == '*')
 {
-d = va_arg(ap, int);
+y = va_arg(args, int);
 s++;
 }
 else
 {
-while (_isdigit(*s))
-d = d * 10 + (*s++ - '0');
+while (_Adigit(*s))
+y = y * 10 + (*s++ - '0');
 }
-params->precision = d;
+params->precision = y;
 return (s);
 }
