@@ -1,6 +1,23 @@
 #include "main.h"
 
 /**
+* _puts - prints the string on a new line
+* @str: this is the string to print
+*
+* Return:( str-a)
+*/
+int _puts(char *str)
+{
+char *a = str;/*declaration of variables*/
+
+while (*str)
+_putchar(*str++);
+return (str - a);
+}
+
+#include "main.h"
+
+/**
  * _putchar - writes the character c to stdout
  * @c: The character to print
  * 
