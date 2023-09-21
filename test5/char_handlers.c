@@ -1,6 +1,26 @@
 #include "main.h"
 
 /**
+* print_int - This  prints  d integer
+* @ap: argument pointer
+* @params: parameters structure
+*
+* Return: no xter  printed
+*/
+int print_integer(va_list args, pmtrs_t *pmtrs)
+{
+long li;
+
+if (pmtrs->modi_l)
+li = va_arg(args, long);
+else if (pmtrs->modi_h)
+li = (short int)va_arg(args, int);
+else
+li = (int)va_arg(args, int);
+return (print_num(transform(l, 10, 0, pmtrs), pmtrs));
+}
+
+/**
 * print_ch - This prints char
 * @ap: argument pointer
 * @params: parameters structure
@@ -20,26 +40,6 @@ add += _putchar(pad_ch);
 if (!pmtrs->flg_ms)
 add += _putchar(ch);
 return (add);
-}
-
-/**
-* print_int - This  prints  d integer
-* @ap: argument pointer
-* @params: parameters structure
-*
-* Return: no xter  printed
-*/
-int print_integer(va_list args, pmtrs_t *pmtrs)
-{
-long li;
-
-if (pmtrs->modi_l)
-li = va_arg(args, long);
-else if (pmtrs->modi_h)
-li = (short int)va_arg(args, int);
-else
-li = (int)va_arg(args, int);
-return (print_num(transform(l, 10, 0, pmtrs), pmtrs));
 }
 
 /**
@@ -85,20 +85,6 @@ return (add);
 }
 
 /**
-* print_percent - This is to  string
-* @ap: The argument pointer
-* @params: parameters structure
-*
-* Return: no of  printed xter
-*/
-int print_per(va_list args, pmtrs_t *pmtrs)
-{
-(void)args;
-(void)pmtrs;
-return (_putchar('%'));
-}
-
-/**
 * print_S - custom format spec.
 * @ap: The argument pointer
 * @params: structure of the parameter
@@ -130,4 +116,18 @@ add += _putchar(*str);
 }
 }
 return (add);
+}
+
+/**
+* print_percent - This is to  string
+* @ap: The argument pointer
+* @params: parameters structure
+*
+* Return: no of  printed xter
+*/
+int print_per(va_list args, pmtrs_t *pmtrs)
+{
+(void)args;
+(void)pmtrs;
+return (_putchar('%'));
 }
