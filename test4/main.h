@@ -17,7 +17,7 @@ struct SpecifierFunctionMap
 
 int _putchar(char c);
 int _printf(const char * const format, ...);
-void Print_String(const char *str);
+int Print_String(const char *str);
 void Print_Char(va_list args);
 size_t _strlen(const char *str);
 

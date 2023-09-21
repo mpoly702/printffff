@@ -5,17 +5,19 @@
  * Return: the length of the string.
  */
 
-void Print_String(const char *str)
+int Print_String(const char *str)
 {
+	int i;
+	int len;
+	
     if (str == NULL) 
     {
        str = "(null)";
-	    int i, len;
 	    
-		len = _strlen(s);
+		len = _strlen(str);
 		for (i = 0; i < len; i++)
 			_putchar(str[i]);
-		return (len);
+		return(len);
     }
     else
     {
@@ -25,4 +27,5 @@ void Print_String(const char *str)
             putchar(*p);
         }
     }
+    return(0);
 }
