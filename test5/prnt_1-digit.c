@@ -1,26 +1,27 @@
 #include "main.h"
 
 /**
-* init_params - clearsthe field in struct and resets the buf
-* @params: tis is the struct of the parameter
-* @ap: argument pointer
+* init_pmtrs - clearsthe field in struct and resets the buf
+* @pmtrs: tis is the struct of the parameter
+* @args: argument pointer
+*
 * Return: void
 */
 
-void init_params(params_t *params, va_list ap)
+void init_pmtrs(pmtrs_t *pmtrs, va_list args)
 {
-params->unsign = 0;
+pmtrs->usg = 0;
 
-params->plus_flag = 0;
-params->space_flag = 0;
-params->hashtag_flag = 0;
-params->zero_flag = 0;
-params->minus_flag = 0;
+pmtrs->flg_pls = 0;
+pmtrs->flag_sp = 0;
+pmtrs->flg_htag = 0;
+pmtrs->flg_z = 0;
+pmtrs->flg_ms = 0;
 
-params->width = 0;
-params->precision = UINT_MAX;
+pmtrs->width = 0;
+pmtrs->precision = UINT_MAX;
 
-params->h_modifier = 0;
-params->l_modifier = 0;
-(void)ap;
+pmtrs->modi_h = 0;
+params->modi_l = 0;
+(void)args;
 }
