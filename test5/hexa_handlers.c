@@ -7,21 +7,21 @@
 *
 * Return: This is the bytes printed
 */
-int print_hex(va_list ap, params_t *params)
+int hexa_print(va_list args, pmtrs_t *pmtrs)
 {
-unsigned long l;
-int c = 0;
+unsigned long li;
+int ci = 0;
 char *str;
 
-if (params->l_modifier)
-l = (unsigned long)va_arg(ap, unsigned long);
-else if (params->h_modifier)
-l = (unsigned short int)va_arg(ap, unsigned int);
+if (pmtrs->modi_l)
+li = (unsigned long)va_arg(args, unsigned long);
+else if (pmtrs->modi_h)
+li = (unsigned short int)va_arg(args, unsigned int);
 else
-l = (unsigned int)va_arg(ap, unsigned int);
+li = (unsigned int)va_arg(args, unsigned int);
 
-str = convert(l, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
-if (params->hashtag_flag && l)
+str = transform(l, 16, USG_CONVT | LOWER_CASE, pmtrs);
+if (pmtrs->hashtag_flg && l)
 {
 *--str = 'x';
 *--str = '0';
