@@ -51,7 +51,7 @@ struct SpecifierFunctionMap
 
 int _putchar(char c);
 int _printf(const char * const format, ...);
-void Print_String(va_list args);
+void Print_String(va_list args, params_t *params);
 void Print_Char(va_list args);
 
 #endif
