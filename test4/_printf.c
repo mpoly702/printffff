@@ -19,7 +19,8 @@ int _printf(const char * const format, ...)
 			i++; /* Move to the next character after '%' */
 			if (format[i] == 's')
 			{
-				Print_String(args);
+				const char *str = va_arg(args, const char *);
+				Print_String(str);
 				break;
 			}
 			else if (format[i] == 'c')
