@@ -8,7 +8,7 @@
  */
 int Print_String(va_list args, params_t *params)
 {
-    char *str = va_arg(ap, char *), pad_char = ' ';
+    char *str = va_arg(args, char *), pad_char = ' ';
     unsigned int pad = 0, sum = 0, i = 0, j;
 
     (void)params; /*This line is used to suppress the "unused parameter" warning.*/
