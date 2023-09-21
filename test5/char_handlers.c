@@ -5,6 +5,7 @@
 * @ap: argument pointer
 * @params: parameters structure
 *
+*
 * Return: The no char to be  printed
 */
 int print_ch(va_list args, pmtrs_t *pmtrs)
