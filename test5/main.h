@@ -38,7 +38,7 @@
  *
  */
 
-typedef struct pmeter
+typedef struct inputs
 {
 	unsigned int usg		: 1;
 
@@ -53,7 +53,7 @@ typedef struct pmeter
 
 	unsigned int modi_h		: 1;
 	unsigned int modi_l		: 1;
-} pmtrs_t
+} pmtrs_t;
 
 /**
  * struct specifier - Struct token
@@ -64,7 +64,7 @@ typedef struct pmeter
 typedef struct indicator
 {
 	char *indicator;
-	int (*f)(va_list, pmtrs_t *);
+i	int (*f)(va_list, pmtrs_t *);
 } ind_t;
 
 int print_ch(va_list args, pmtrs_t *pmtrs);
@@ -73,9 +73,9 @@ int print_string(va_list args, pmtrs_t *pmtrs);
 int print_per(va_list args, pmtrs_t *pmtrs);
 int print_SOS(va_list args, pmtrs_t *pmtrs);
 int (*specifier_get(char *s))(va_list args, pmtrs_t *pmtrs);
-int func_get_print(char *s, va_list args, pmtrs_t *pmtrs);
+int func_get_pr(char *s, va_list args, pmtrs_t *pmtrs);
 int flg_get(char *s, pmtrs_t *pmtrs);
-int modi_get(char *s, pmtrs_t *pmtrs);
+int modif_get(char *s, pmtrs_t *pmtrs);
 char *width_get(char *s, pmtrs_t *pmtrs, va_list args);
 int hexa_print(va_list args, pmtrs_t *pmtrs);
 int HEXA_print(va_list args, pmtrs_t *pmtrs);
@@ -94,7 +94,7 @@ int _printf(const char *format, ...);
 int print_w(char *begin, char *end, char *except);
 int rev_str(va_list args, pmtrs_t *pmtrs);
 int print_root(va_list args, pmtrs_t *pmtrs);
-char *transform(long int num, int base, int flags, pmtrs_t *pmtrs);
+char *transform(long int x, int y, int flgs, pmtrs_t *pmtrs);
 int usg_print(va_list args, pmtrs_t *pmtrs);
 int print_locate(va_list args, pmtrs_t *pmtrs);
 
