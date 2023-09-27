@@ -1,7 +1,5 @@
 
 
-
-You have a captain's log due before 2023-09-24 (in 2 days)! Log it now!
 We're moving to Discord!
 In a few days, we will be leaving Slack in favor of Discord 🎉
 Click here for more information
@@ -457,57 +455,5 @@ Repo:
     Directory: 0x12-singly_linked_lists
     File: 4-free_list.c
 
-5. The Hare and the Tortoise
-#advanced
+Copyright © 2023 ALX, All rights reserved.
 
-Write a function that prints You're beat! and yet, you must allow,\nI bore my house upon my back!\n before the main function is executed.
-
-    You are allowed to use the printf function
-
-julien@ubuntu:~/0x12. Singly linked lists$ cat 100-main.c
-#include <stdio.h>
-
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
-int main(void)
-{
-    printf("(A tortoise, having pretty good sense of a hare's nature, challenges one to a race.)\n");
-    return (0);
-}
-julien@ubuntu:~/$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 100-main.c 100-first.c -o first
-julien@ubuntu:~/$ ./first 
-You're beat! and yet, you must allow,
-I bore my house upon my back!
-(A tortoise, having pretty good sense of a hare's nature, challenges one to a race.)
-julien@ubuntu:~/$ 
-
-Repo:
-
-    GitHub repository: alx-low_level_programming
-    Directory: 0x12-singly_linked_lists
-    File: 100-first.c
-
-6. Real programmers can write assembly code in any language
-#advanced
-
-Write a 64-bit program in assembly that prints Hello, Holberton, followed by a new line.
-
-    You are only allowed to use the printf function
-    You are not allowed to use interrupts
-    Your program will be compiled using nasm and gcc:
-
-julien@ubuntu:~/$ nasm -f elf64 101-hello_holberton.asm && gcc -no-pie -std=gnu89 101-hello_holberton.o -o hello
-julien@ubuntu:~/$ ./hello 
-Hello, Holberton
-julien@ubuntu:~/$ 
-
-Repo:
-
-    GitHub repository: alx-low_level_programming
-    Directory: 0x12-singly_linked_lists
-    File: 101-hello_holberton.asm
-
-Copyright © 2023 ALX, All 
