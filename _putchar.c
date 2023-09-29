@@ -1,39 +1,13 @@
 #include "main.h"
-
+#include <unistd.h>
 /**
-* _puts - prints the string on a new line
-* @str: this is the string to print
+* _putchar - writes the character c to stdout
+* @c: The character to print
 *
-* Return:( str-a)
+* Return: On success 1.
+* On error, -1 is returned, and errno is set appropriately.
 */
-int _puts(char *str)
+int _putchar(char c)
 {
-char *a = str;/*declaration of variables*/
-
-while (*str)
-_putchar(*str++);
-return (str - a);
-}
-
-/**
-* _putchar - writes char c  to stdout
-* @c: char to print
-*
-* Return: On success 1 should be returned.
-* -1 is returned when error occurs and error is set appropriately
-* and freees memory in the case of being done
-*/
-int _putchar(int c)
-{
-static int i;
-static char buf[SIZE_BUF];
-
-if (c == FREE_BUF || i >= SIZE_BUF)
-{
-write(1, buf, i);
-i = 0;
-}
-if (c != FREE_BUF)
-buf[i++] = c;
-return (1);
+return (write(1, &c, 1));
 }
