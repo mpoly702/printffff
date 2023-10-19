@@ -35,3 +35,4 @@ char *input(void)
 	}
 	return (input);
 }
+

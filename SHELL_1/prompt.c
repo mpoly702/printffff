@@ -12,3 +12,4 @@ void instance(void)
 
 	write(1, instance, 1);
 }
+
