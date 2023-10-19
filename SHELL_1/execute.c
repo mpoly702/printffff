@@ -1,15 +1,21 @@
 #include "shell.h"
 
-/*
- * execute - This function executes commands
- * @args: This array of strings is a parameter for the function
+/**
+ * execute - Execute shell commands
+ * @args: An array of strings representing the command and its arguments
  *
- * Description: This function executes commands
- * Return: 1 an integer that indicates a successful execution
+ * Description:
+ *   This function takes an array of strings containing a shell command
+ *   and its arguments. It forks a new process to execute the command and
+ *   waits for the child process to complete. It returns 1 to indicate
+ *   successful execution.
+ *
+ * Return: 1 for successful execution, or an error code.
  */
-
 int execute(char **args)
 {
+    /* Function code here */
+
 	pid_t pid;
 	pid_t xpid;
 
