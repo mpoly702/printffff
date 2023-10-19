@@ -15,7 +15,7 @@ extern char **environ;
 
 #define BUF 1024
 
-
+void instance(void);
 char *input(void);
 char **tokenizer(char *string);
 int execute(char **args);
